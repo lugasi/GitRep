@@ -1,0 +1,17 @@
+Tehtävämäärittely
+
+Toteutetaan ohjelma, jolla kaksi pelaajaa voivat pelata Backgammon-peliä.
+
+käyttäjät:	pelaaja (x2):
+
+toiminnot (valikko):
+	
+	- uusi peli
+	
+	- lopeta
+
+toiminnot (peli):
+	
+	- heitä noppia
+	
+	- siirrä nappuloita
