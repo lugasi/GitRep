@@ -16,16 +16,8 @@ class Ruutu {
         
     }
     
-    public void asetaNappula(Nappula nappula)   {
+    void asetaNappula(Nappula nappula)   {
         nappulat.add(nappula);
     }
     
-    public void poistaNappula(Nappula nappula)  {
-        nappulat.remove(nappula);
-    }
-    
-    public void siirraNappula(Nappula nappula, Ruutu lahto)    {
-        nappulat.add(nappula);
-        lahto.poistaNappula(nappula);
-    }
 }
