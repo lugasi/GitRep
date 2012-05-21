@@ -5,7 +5,7 @@ package Logic;
  *
  * @author lugasi
  */
-class Nappula {
+public class Nappula {
     private String vari;
     private Ruutu ruutu;
     
@@ -13,7 +13,7 @@ class Nappula {
         this.vari = vari;
     }
     
-    void asetaRuutu(Ruutu ruutu)    {
+    public void asetaRuutuun(Ruutu ruutu)    {
         this.ruutu = ruutu;
     }
 }

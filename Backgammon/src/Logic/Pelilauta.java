@@ -15,8 +15,10 @@ public class Pelilauta {
     private Ruutu mustaVankila;
     
     public Pelilauta()  {
+        ruudut = new ArrayList <Ruutu>();
         for (int i = 1; i <= 24; i++)   {
-            ruudut.add(new Kiila(i));
+            Ruutu r = new Kiila(i);
+            ruudut.add(r);
         }
         valkeaKoti = new Koti();
         mustaKoti = new Koti();
@@ -24,7 +26,7 @@ public class Pelilauta {
         mustaVankila = new Vankila();
     }
 
-    void asetaNappulatRuutuihin(ArrayList<Nappula> valkeat, ArrayList<Nappula> mustat) {
+    public void asetaNappulatRuutuihin(ArrayList<Nappula> valkeat, ArrayList<Nappula> mustat) {
         asetaNappulatRuutuun(0, 2, ruudut.get(0), valkeat);
         asetaNappulatRuutuun(2, 5, ruudut.get(11), valkeat);
         asetaNappulatRuutuun(7, 3, ruudut.get(16), valkeat);
@@ -36,11 +38,18 @@ public class Pelilauta {
         asetaNappulatRuutuun(10, 5, ruudut.get(5), mustat);
     }
     
-    void asetaNappulatRuutuun(int alkuindeksi, int maara, Ruutu ruutu, ArrayList <Nappula> nappulat)  {
+    public void asetaNappulatRuutuun(int alkuindeksi, int maara, Ruutu ruutu, ArrayList <Nappula> nappulat)  {
         for (int i = alkuindeksi; i < alkuindeksi + maara; i++) {
             Nappula n = nappulat.get(i);
             ruutu.asetaNappula(n);
-            n.asetaRuutu(ruutu);
+            n.asetaRuutuun(ruutu);
         }
     }
+
+    public ArrayList<Ruutu> getRuudut() {
+        return ruudut;
+    }
+    
+    
+    
 }

@@ -11,7 +11,7 @@ public class Kiila extends Ruutu {
     private String vari;
     
     public Kiila(int luku)  {
-        
+
         valkeaLuku = luku;
         mustaLuku = 25 - luku;
         

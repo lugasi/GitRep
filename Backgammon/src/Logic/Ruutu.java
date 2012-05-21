@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author lugasi
  */
-class Ruutu {
+public class Ruutu {
     
     private ArrayList <Nappula> nappulat;
     
@@ -16,8 +16,14 @@ class Ruutu {
         
     }
     
-    void asetaNappula(Nappula nappula)   {
+    public void asetaNappula(Nappula nappula)   {
         nappulat.add(nappula);
     }
+
+    public ArrayList<Nappula> getNappulat() {
+        return nappulat;
+    }
+    
+    
     
 }
