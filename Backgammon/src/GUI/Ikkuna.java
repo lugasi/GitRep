@@ -15,18 +15,24 @@ public class Ikkuna extends JFrame {
 
     public Ikkuna() {
         p = new Peli();
-        testi = new JTextField("Testi");
+        testi = new JTextField(p.getVuoro() + "n vuoro");
         
         setLayout(new FlowLayout());
         
         add(testi);
     }
+    
+    public void pelaa() {
+        p.asetaAlkutilanne();
+        
+    }
 
     public static void main(String[] args) {
-        Ikkuna ikkuna = new Ikkuna();
-        ikkuna.setTitle("Backgammon");
-        ikkuna.pack();
-        ikkuna.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ikkuna.setVisible(true);
+        Ikkuna i = new Ikkuna();
+        i.setTitle("Backgammon");
+        i.pack();
+        i.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        i.setVisible(true);
+        i.pelaa();
     }
 }

@@ -20,10 +20,10 @@ public class Pelilauta {
             Ruutu r = new Kiila(i);
             ruudut.add(r);
         }
-        valkeaKoti = new Koti();
-        mustaKoti = new Koti();
-        valkeaVankila = new Vankila();
-        mustaVankila = new Vankila();
+        valkeaKoti = new Koti(25);
+        mustaKoti = new Koti(0);
+        valkeaVankila = new Vankila(0);
+        mustaVankila = new Vankila(25);
     }
 
     public void asetaNappulatRuutuihin(ArrayList<Nappula> valkeat, ArrayList<Nappula> mustat) {
@@ -49,7 +49,42 @@ public class Pelilauta {
     public ArrayList<Ruutu> getRuudut() {
         return ruudut;
     }
+
+    boolean yritaSiirtaaNappulaa(Ruutu lahto, Ruutu maali, String vuoro, Noppa noppa) {
+        if (lahto.getNappulat().isEmpty())  {
+            return false;
+        }
+        if (!lahto.getNappulat().get(0).getVari().equals(vuoro)) {
+            return false;
+        }
+        if (Math.abs(maali.getRuutuNro() - lahto.getRuutuNro()) != noppa.getSilmaluku())    {
+            return false;
+        }
+        if (!maali.getNappulat().isEmpty() && !maali.getNappulat().get(0).getVari().equals(vuoro) && maali.getNappulat().size() > 1)    {
+            return false;
+        }
+        
+        if (vuoro.equals("valkea") && maali.getRuutuNro() > lahto.getRuutuNro())    {
+            if (maali.getNappulat().size() == 1 && maali.getNappulat().get(0).getVari().equals("musta")) {
+                siirraNappula(maali.getNappulat().get(0), maali, mustaVankila);
+            }
+            siirraNappula(lahto.getNappulat().get(0), lahto, maali);
+        }
+        if (vuoro.equals("musta") && maali.getRuutuNro() < lahto.getRuutuNro())    {
+            if (maali.getNappulat().size() == 1 && maali.getNappulat().get(0).getVari().equals("valkea")) {
+                siirraNappula(maali.getNappulat().get(0), maali, valkeaVankila);
+            }
+            siirraNappula(lahto.getNappulat().get(0), lahto, maali);
+        }
+        
+        return true;
+    }
     
-    
+    public void siirraNappula(Nappula nappula, Ruutu lahto, Ruutu maali)    {
+        nappula.asetaRuutuun(maali);
+        
+        maali.asetaNappula(nappula);
+        lahto.poistaNappula(nappula);
+    }
     
 }

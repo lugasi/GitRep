@@ -16,4 +16,10 @@ public class Nappula {
     public void asetaRuutuun(Ruutu ruutu)    {
         this.ruutu = ruutu;
     }
+
+    public String getVari() {
+        return vari;
+    }
+    
+    
 }

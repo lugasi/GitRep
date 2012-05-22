@@ -40,6 +40,7 @@ public class Peli {
         while (noppa1.getSilmaluku() == noppa2.getSilmaluku()) {
             heitaNopat();
         }
+        tuplat = false;
         if (noppa1.getSilmaluku() > noppa2.getSilmaluku()) {
             vuoro = "valkea";
         } else {
@@ -47,43 +48,35 @@ public class Peli {
         }
     }
 
-    public void pelaa() {
-        asetaAlkutilanne();
-
-        while (voittaja.isEmpty()) {
-            if (!ekaKierros) {
-                heitaNopat();
-                if (noppa1.getSilmaluku() == noppa2.getSilmaluku()) {
-                    tuplat = true;
-                }
-            }
-            siirraNappuloita();
-            vuoroVaihtuu();
-        }
-
-        lopetus();
-
-    }
-
-    public void siirraNappuloita() {
-        while (noppa1.getKaytetty() == false || noppa2.getKaytetty() == false) {
-        }
+    public boolean yritaSiirtaaNappulaa(Ruutu lahto, Ruutu maali, Noppa noppa) {
+        return lauta.yritaSiirtaaNappulaa(lahto, maali, vuoro, noppa);
     }
 
     public void heitaNopat() {
         noppa1.heita();
         noppa2.heita();
+        if (noppa1.getSilmaluku() == noppa2.getSilmaluku()) {
+            tuplat = true;
+        }
     }
 
     private void vuoroVaihtuu() {
+        ekaKierros = false;
         if (vuoro.equals("valkea")) {
             vuoro = "musta";
         } else if (vuoro.equals("musta")) {
             vuoro = "valkea";
         }
     }
-    
-    private void lopetus()  {
-        
+
+    private void lopetus() {
+    }
+
+    public String getVoittaja() {
+        return voittaja;
+    }
+
+    public String getVuoro() {
+        return vuoro;
     }
 }
