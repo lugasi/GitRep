@@ -25,6 +25,8 @@ public class Ikkuna extends JFrame {
     public void pelaa() {
         p.asetaAlkutilanne();
         
+        
+        
     }
 
     public static void main(String[] args) {

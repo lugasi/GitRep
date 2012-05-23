@@ -49,7 +49,13 @@ public class Peli {
     }
 
     public boolean yritaSiirtaaNappulaa(Ruutu lahto, Ruutu maali, Noppa noppa) {
-        return lauta.yritaSiirtaaNappulaa(lahto, maali, vuoro, noppa);
+        boolean onnistui = lauta.yritaSiirtaaNappulaa(lahto, maali, vuoro, noppa);
+        if (onnistui && tuplat == true && noppa1.getKaytetty() == true && noppa2.getKaytetty() == true)   {
+            tuplat = false;
+            noppa1.setKaytetty(false);
+            noppa2.setKaytetty(false);
+        }
+        return onnistui;
     }
 
     public void heitaNopat() {
@@ -79,4 +85,14 @@ public class Peli {
     public String getVuoro() {
         return vuoro;
     }
+
+    public boolean isEkaKierros() {
+        return ekaKierros;
+    }
+
+    public boolean isTuplat() {
+        return tuplat;
+    }
+    
+    
 }

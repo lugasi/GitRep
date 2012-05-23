@@ -12,6 +12,7 @@ public class Ruutu {
     private ArrayList <Nappula> nappulat;
     
     public Ruutu()  {
+        ruutuNro = -1;
         nappulat = new ArrayList <Nappula>();
         
     }

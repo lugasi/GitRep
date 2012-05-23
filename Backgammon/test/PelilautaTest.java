@@ -4,9 +4,10 @@
  */
 
 import Logic.Nappula;
+import Logic.Noppa;
 import Logic.Pelilauta;
 import java.util.ArrayList;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import org.junit.*;
 
 /**
@@ -18,6 +19,7 @@ public class PelilautaTest {
     Pelilauta lauta;
     ArrayList <Nappula> valkeat;
     ArrayList <Nappula> mustat;
+    Noppa noppa;
     
     public PelilautaTest() {
         lauta = new Pelilauta();
@@ -27,6 +29,7 @@ public class PelilautaTest {
             valkeat.add(new Nappula("valkea"));
             mustat.add(new Nappula("musta"));
         }
+        noppa = new Noppa();
     }
 
     @BeforeClass
@@ -40,16 +43,15 @@ public class PelilautaTest {
     @Before
     public void setUp() {
         lauta.asetaNappulatRuutuihin(valkeat, mustat);
+        while(noppa.heita() != 6)   {
+            
+        }
     }
     
     @After
     public void tearDown() {
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
     
     @Test
     public void nappulatAsetettuOikein()    {
@@ -62,4 +64,30 @@ public class PelilautaTest {
         assertEquals(5, lauta.getRuudut().get(18).getNappulat().size());
         assertEquals(2, lauta.getRuudut().get(23).getNappulat().size());
     }
+    
+    @Test
+    public void nappulaaEiSiirretaTyhjastaRuudusta()    {
+        assertFalse(lauta.yritaSiirtaaNappulaa(lauta.getRuudut().get(2), lauta.getRuudut().get(8), "valkea", noppa));
+        assertEquals(0, lauta.getRuudut().get(2).getNappulat().size());
+        assertEquals(0, lauta.getRuudut().get(8).getNappulat().size());
+    }
+    
+    @Test
+    public void nappulaaEiSiirretaToisenPelaajanVuorolla()  {
+        assertFalse(lauta.yritaSiirtaaNappulaa(lauta.getRuudut().get(0), lauta.getRuudut().get(6), "musta", noppa));
+        assertEquals(2, lauta.getRuudut().get(0).getNappulat().size());
+        assertEquals(0, lauta.getRuudut().get(6).getNappulat().size());  
+    }
+    
+    @Test
+    public void nappulaaEiSiirretaJosNopanSilmalukuEiTasmaa()   {
+        assertFalse(lauta.yritaSiirtaaNappulaa(lauta.getRuudut().get(0), lauta.getRuudut().get(2), "valkea", noppa));
+        assertEquals(2, lauta.getRuudut().get(0).getNappulat().size());
+        assertEquals(0, lauta.getRuudut().get(2).getNappulat().size());
+        assertEquals(0, lauta.getRuudut().get(6).getNappulat().size());
+    }
+    
+    
+    
+    
 }

@@ -14,7 +14,7 @@ public class Noppa {
     }
     
     public int heita() {
-        silmaluku = (int) Math.random() * 6 + 1;
+        silmaluku = (int) (Math.random() * 6) + 1;
         setKaytetty(false);
         return silmaluku;
     }

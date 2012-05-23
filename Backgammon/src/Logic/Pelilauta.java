@@ -50,7 +50,7 @@ public class Pelilauta {
         return ruudut;
     }
 
-    boolean yritaSiirtaaNappulaa(Ruutu lahto, Ruutu maali, String vuoro, Noppa noppa) {
+    public boolean yritaSiirtaaNappulaa(Ruutu lahto, Ruutu maali, String vuoro, Noppa noppa) {
         if (lahto.getNappulat().isEmpty())  {
             return false;
         }
@@ -60,7 +60,10 @@ public class Pelilauta {
         if (Math.abs(maali.getRuutuNro() - lahto.getRuutuNro()) != noppa.getSilmaluku())    {
             return false;
         }
-        if (!maali.getNappulat().isEmpty() && !maali.getNappulat().get(0).getVari().equals(vuoro) && maali.getNappulat().size() > 1)    {
+        if (noppa.getKaytetty() == true)    {
+            return false;
+        }
+        if (!maali.getNappulat().isEmpty() && !maali.getNappulat().get(0).getVari().equals(lahto.getNappulat().get(0).getVari()) && maali.getNappulat().size() > 1)    {
             return false;
         }
         
@@ -76,7 +79,7 @@ public class Pelilauta {
             }
             siirraNappula(lahto.getNappulat().get(0), lahto, maali);
         }
-        
+        noppa.setKaytetty(true);
         return true;
     }
     

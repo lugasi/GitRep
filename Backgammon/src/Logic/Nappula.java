@@ -20,6 +20,12 @@ public class Nappula {
     public String getVari() {
         return vari;
     }
+
+    public Ruutu getRuutu() {
+        return ruutu;
+    }
+    
+    
     
     
 }
