@@ -50,6 +50,16 @@ public class Pelilauta {
         return ruudut;
     }
 
+    public Ruutu getMustaVankila() {
+        return mustaVankila;
+    }
+
+    public Ruutu getValkeaVankila() {
+        return valkeaVankila;
+    }
+    
+    
+
     public boolean yritaSiirtaaNappulaa(Ruutu lahto, Ruutu maali, String vuoro, Noppa noppa) {
         if (lahto.getNappulat().isEmpty())  {
             return false;

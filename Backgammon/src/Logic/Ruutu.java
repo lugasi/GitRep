@@ -33,6 +33,15 @@ public class Ruutu {
         return ruutuNro;
     }
     
+    @Override
+    public String toString()    {
+        if (nappulat.isEmpty()) {
+            return "0";
+        }
+        else    {
+            return nappulat.get(0).getVari() + " " + nappulat.size();
+        }
+    }
     
     
 }

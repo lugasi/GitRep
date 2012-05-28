@@ -12,33 +12,10 @@ public class Ikkuna extends JFrame {
 
     private Peli peli;
     
-    private JButton r1 = new JButton("1");
-    private JButton r2 = new JButton("2");
-    private JButton r3 = new JButton("3");
-    private JButton r4 = new JButton("4");
-    private JButton r5 = new JButton("5");
-    private JButton r6 = new JButton("6");
+    private JButton[] r = new JButton[24];
     
-    private JButton r7 = new JButton("7");
-    private JButton r8 = new JButton("8");
-    private JButton r9 = new JButton("9");
-    private JButton r10 = new JButton("10");
-    private JButton r11 = new JButton("11");
-    private JButton r12 = new JButton("12");
-    
-    private JButton r13 = new JButton("13");
-    private JButton r14 = new JButton("14");
-    private JButton r15 = new JButton("15");
-    private JButton r16 = new JButton("16");
-    private JButton r17 = new JButton("17");
-    private JButton r18 = new JButton("18");
-    
-    private JButton r19 = new JButton("19");
-    private JButton r20 = new JButton("20");
-    private JButton r21 = new JButton("21");
-    private JButton r22 = new JButton("22");
-    private JButton r23 = new JButton("23");
-    private JButton r24 = new JButton("24");
+    private JButton n1 = new JButton("");
+    private JButton n2 = new JButton("");
     
     private JButton v1 = new JButton("");
     private JButton v2 = new JButton("");
@@ -48,57 +25,86 @@ public class Ikkuna extends JFrame {
     private JPanel p3;
     private JPanel p4;
     
+    private JPanel p5;
+    private JPanel p6;
+    
+    private JPanel p7;
 
     public Ikkuna() {
         peli = new Peli();
         
+        for (int i = 0; i < 24; i++)    {
+            r[i] = new JButton("" + (i+1));
+        }
+        
         p1 = new JPanel(new GridLayout(1,6));
-        p1.add(r6);
-        p1.add(r5);
-        p1.add(r4);
-        p1.add(r3);
-        p1.add(r2);
-        p1.add(r1);
+        p1.add(r[5]);
+        p1.add(r[4]);
+        p1.add(r[3]);
+        p1.add(r[2]);
+        p1.add(r[1]);
+        p1.add(r[0]);
         
         p2 = new JPanel(new GridLayout(1,6));
-        p2.add(r12);
-        p2.add(r11);
-        p2.add(r10);
-        p2.add(r9);
-        p2.add(r8);
-        p2.add(r7);
+        p2.add(r[11]);
+        p2.add(r[10]);
+        p2.add(r[9]);
+        p2.add(r[8]);
+        p2.add(r[7]);
+        p2.add(r[6]);
         
         p3 = new JPanel(new GridLayout(1,6));
-        p3.add(r13);
-        p3.add(r14);
-        p3.add(r15);
-        p3.add(r16);
-        p3.add(r17);
-        p3.add(r18);
+        p3.add(r[12]);
+        p3.add(r[13]);
+        p3.add(r[14]);
+        p3.add(r[15]);
+        p3.add(r[16]);
+        p3.add(r[17]);
         
         p4 = new JPanel(new GridLayout(1,6));
-        p4.add(r19);
-        p4.add(r20);
-        p4.add(r21);
-        p4.add(r22);
-        p4.add(r23);
-        p4.add(r24);
+        p4.add(r[18]);
+        p4.add(r[19]);
+        p4.add(r[20]);
+        p4.add(r[21]);
+        p4.add(r[22]);
+        p4.add(r[23]);
         
+        p5 = new JPanel(new BorderLayout());
+        p5.add("North", p3);
+        p5.add("Center", n1);
+        p5.add("South", p2);
         
+        p6 = new JPanel(new BorderLayout());
+        p6.add("North", p4);
+        p6.add("Center", n2);
+        p6.add("South", p1);
         
-        setLayout(new GridLayout(2, 3));
-        add(p3);
-        add(v1);
-        add(p4);
-        add(p2);
-        add(v2);
-        add(p1);
+        p7 = new JPanel(new GridLayout(2,1));
+        p7.add(v1);
+        p7.add(v2);
+        
+        setLayout(new BorderLayout());
+        add("West", p5);
+        add("Center", p7);
+        add("East", p6);
+        
     }
     
     public void pelaa() {
         peli.asetaAlkutilanne();
+        paivita();
         
         
+    }
+    
+    public void paivita()   {
+        for (int i = 0; i < 24; i++)    {
+            r[i].setText(peli.getLauta().getRuudut().get(i).toString());
+        }
+        v1.setText(peli.getLauta().getMustaVankila().toString());
+        v2.setText(peli.getLauta().getValkeaVankila().toString());
+        n1.setText("Noppa 1: " + peli.getNoppa1().toString());
+        n2.setText("Noppa 2: " + peli.getNoppa2().toString());
         
     }
 
@@ -108,6 +114,7 @@ public class Ikkuna extends JFrame {
         i.pack();
         i.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         i.setVisible(true);
+        i.setSize(1200, 400);
         i.pelaa();
     }
 }

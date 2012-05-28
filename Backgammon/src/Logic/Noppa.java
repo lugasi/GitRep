@@ -30,4 +30,11 @@ public class Noppa {
     public void setKaytetty(boolean k) {
         kaytetty = k;
     }
+
+    @Override
+    public String toString() {
+        return "" + silmaluku;
+    }
+    
+    
 }

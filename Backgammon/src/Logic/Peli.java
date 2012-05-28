@@ -66,6 +66,16 @@ public class Peli {
         }
     }
 
+    public Noppa getNoppa1() {
+        return noppa1;
+    }
+
+    public Noppa getNoppa2() {
+        return noppa2;
+    }
+    
+    
+
     private void vuoroVaihtuu() {
         ekaKierros = false;
         if (vuoro.equals("valkea")) {
@@ -77,6 +87,12 @@ public class Peli {
 
     private void lopetus() {
     }
+
+    public Pelilauta getLauta() {
+        return lauta;
+    }
+    
+    
 
     public String getVoittaja() {
         return voittaja;
