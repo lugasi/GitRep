@@ -76,7 +76,7 @@ public class Peli {
     
     
 
-    private void vuoroVaihtuu() {
+    public void vuoroVaihtuu() {
         ekaKierros = false;
         if (vuoro.equals("valkea")) {
             vuoro = "musta";
@@ -85,7 +85,7 @@ public class Peli {
         }
     }
 
-    private void lopetus() {
+    public void lopetus() {
     }
 
     public Pelilauta getLauta() {
@@ -108,6 +108,10 @@ public class Peli {
 
     public boolean isTuplat() {
         return tuplat;
+    }
+
+    public boolean noppiaKayttamatta() {
+        return !noppa1.getKaytetty() || !noppa2.getKaytetty();
     }
     
     
