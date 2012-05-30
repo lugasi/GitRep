@@ -14,10 +14,10 @@ import javax.swing.*;
 public class Ikkuna extends JFrame {
 
     private Peli peli;
-    private boolean nopanHeitto;
-    private boolean lahtoRuudunValinta;
-    private boolean maaliRuudunValinta;
-    private boolean nopanValinta;
+    private boolean nopanHeitto = false;
+    private boolean lahtoRuudunValinta = false;
+    private boolean maaliRuudunValinta = false;
+    private boolean nopanValinta = false;
     private Ruutu lahtoRuutu;
     private Ruutu maaliRuutu;
     private Noppa noppa;
@@ -39,6 +39,7 @@ public class Ikkuna extends JFrame {
 
         for (int i = 0; i < 24; i++) {
             r[i] = new JButton("" + (i + 1));
+            r[i].setActionCommand("" + i);
         }
 
         p1 = new JPanel(new GridLayout(1, 6));
@@ -129,11 +130,14 @@ public class Ikkuna extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     
+                    int valittuRuutu = Integer.parseInt(e.getActionCommand());
+                    
                     if (lahtoRuudunValinta) {
-                        //lahtoRuutu = peli.getLauta().getRuudut().get(i);
+                        
+                        lahtoRuutu = peli.getLauta().getRuudut().get(valittuRuutu);
                         lahtoRuudunValinta = false;
                     } else if (maaliRuudunValinta) {
-                        //maaliRuutu = peli.getLauta().getRuudut().get(i);
+                        maaliRuutu = peli.getLauta().getRuudut().get(valittuRuutu);
                         maaliRuudunValinta = false;
                     }
                     paivita();
@@ -148,7 +152,8 @@ public class Ikkuna extends JFrame {
 
         while (peli.getVoittaja().isEmpty()) {
             if (!peli.isEkaKierros()) {
-                heitaNopat();
+                peli.heitaNopat();
+                //heitaNopat();
             }
             siirraNappuloita();
             peli.vuoroVaihtuu();
@@ -160,7 +165,7 @@ public class Ikkuna extends JFrame {
         for (int i = 0; i < 24; i++) {
             r[i].setText(peli.getLauta().getRuudut().get(i).toString());
         }
-        v1.setText(peli.getLauta().getMustaVankila().toString());
+        //v1.setText(peli.getLauta().getMustaVankila().toString());
         v2.setText(peli.getLauta().getValkeaVankila().toString());
         n1.setText("Noppa 1: " + peli.getNoppa1().toString());
         n2.setText("Noppa 2: " + peli.getNoppa2().toString());
@@ -178,30 +183,35 @@ public class Ikkuna extends JFrame {
     }
 
     private void heitaNopat() {
+        v1.setText("Heitä nopat.");
         nopanHeitto = true;
         while (nopanHeitto) {
+            
         }
+        
     }
 
     private void siirraNappuloita() {
         while (peli.noppiaKayttamatta()) {
+            
+            v1.setText("Valitse lähtöruutu.");
             lahtoRuudunValinta = true;
             while (lahtoRuudunValinta) {
             }
-            lahtoRuudunValinta = false;
-
+            
+            v1.setText("Valitse maaliruutu.");
             maaliRuudunValinta = true;
             while (maaliRuudunValinta) {
             }
-            maaliRuudunValinta = false;
-
+            
+            v1.setText("Valitse noppa.");
             nopanValinta = true;
             while (nopanValinta) {
             }
-            nopanValinta = false;
+            
 
             peli.yritaSiirtaaNappulaa(lahtoRuutu, maaliRuutu, noppa);
+            paivita();
         }
-        n1.setText("Testi");
     }
 }
