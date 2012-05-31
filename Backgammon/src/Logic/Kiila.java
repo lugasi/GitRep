@@ -2,8 +2,8 @@
 package Logic;
 
 /**
- *
- * @author lugasi
+ * Tavallinen ruutu, joita on laudalla 24.
+ * 
  */
 public class Kiila extends Ruutu {
     private String vari;

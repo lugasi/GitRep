@@ -3,8 +3,11 @@ package Logic;
 import java.util.ArrayList;
 
 /**
- *
- * @author lugasi
+ * Hallinnoi pelikokonaisuutta eli pelilautaa, noppia, nappuloita, siirtovuoroja,
+ * pelin alkamista ja loppumista.
+ * 
+ * 
+ * 
  */
 public class Peli {
 

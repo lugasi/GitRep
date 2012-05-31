@@ -4,8 +4,9 @@ package Logic;
 import java.util.ArrayList;
 
 /**
- *
- * @author lugasi
+ * Sisältää kaikki pelin ruudut ja hallinnoi nappuloiden asettelemista ja 
+ * siirtämistä ruudusta toiseen.
+ * 
  */
 public class Pelilauta {
     private ArrayList <Ruutu> ruudut;
@@ -58,37 +59,82 @@ public class Pelilauta {
         return valkeaVankila;
     }
     
+    public Ruutu getMustaKoti() {
+        return mustaKoti;
+    }
     
+    public Ruutu getValkeaKoti() {
+        return valkeaKoti;
+    }
+    
+    /**
+     * Tarkistaa siirron laillisuuden ja toteuttaa sen, jos se on laillinen. 
+     * 
+     * @param lahto
+     * @param maali
+     * @param vuoro
+     * @param noppa
+     * @return 
+     */
 
     public boolean yritaSiirtaaNappulaa(Ruutu lahto, Ruutu maali, String vuoro, Noppa noppa) {
+        //tyhjästä ruudusta ei voi siirtää
         if (lahto.getNappulat().isEmpty())  {
             return false;
         }
+        //vastustajan nappulaa ei voi siirtää
         if (!lahto.getNappulat().get(0).getVari().equals(vuoro)) {
             return false;
         }
+        //vain nopan silmäluvun verran saa siirtyä
         if (Math.abs(maali.getRuutuNro() - lahto.getRuutuNro()) != noppa.getSilmaluku())    {
             return false;
         }
+        //vain käyttämättömällä nopalla saa siirtää
         if (noppa.getKaytetty() == true)    {
             return false;
         }
+        //vastustajan kontrolloimaan (ainakin 2 nappulaa) ruutuun ei saa siirtyä
         if (!maali.getNappulat().isEmpty() && !maali.getNappulat().get(0).getVari().equals(lahto.getNappulat().get(0).getVari()) && maali.getNappulat().size() > 1)    {
             return false;
         }
         
         if (vuoro.equals("valkea") && maali.getRuutuNro() > lahto.getRuutuNro())    {
+            
+            //vankilassa olevat nappulat täytyy siirtää ensin pois vankilasta
+            if (!valkeaVankila.getNappulat().isEmpty() && !lahto.equals(valkeaVankila)) {
+                return false;
+            }
+            //nappuloita ei saa kotiuttaa ennen kuin kaikki nappulat ovat 
+            //kuudessa viimeisessä ruudussa
+            if (maali.equals(valkeaKoti) && valkeaEiSaaKotiuttaa())   {
+                return false;
+            }
+            
+            //siirto laillinen, siirretään mahdollinen vastustajan nappula vankilaan
             if (maali.getNappulat().size() == 1 && maali.getNappulat().get(0).getVari().equals("musta")) {
                 siirraNappula(maali.getNappulat().get(0), maali, mustaVankila);
             }
-            siirraNappula(lahto.getNappulat().get(0), lahto, maali);
         }
+        
+        //sama logiikka mustalle
         if (vuoro.equals("musta") && maali.getRuutuNro() < lahto.getRuutuNro())    {
+            
+            if (!mustaVankila.getNappulat().isEmpty() && !lahto.equals(mustaVankila)) {
+                return false;
+            }
+            
+            if (maali.equals(mustaKoti) && mustaEiSaaKotiuttaa())   {
+                return false;
+            }
+            
             if (maali.getNappulat().size() == 1 && maali.getNappulat().get(0).getVari().equals("valkea")) {
                 siirraNappula(maali.getNappulat().get(0), maali, valkeaVankila);
             }
-            siirraNappula(lahto.getNappulat().get(0), lahto, maali);
         }
+        
+        //nappula siirretään ja noppa merkitään käytetyksi
+        siirraNappula(lahto.getNappulat().get(0), lahto, maali);
         noppa.setKaytetty(true);
         return true;
     }
@@ -98,6 +144,30 @@ public class Pelilauta {
         
         maali.asetaNappula(nappula);
         lahto.poistaNappula(nappula);
+    }
+
+    private boolean valkeaEiSaaKotiuttaa() {
+        if (!valkeaVankila.getNappulat().isEmpty())  {
+            return false;
+        }
+        for (int i = 0; i < 18; i++)    {
+            if (!ruudut.get(i).getNappulat().isEmpty() && ruudut.get(i).getNappulat().get(0).getVari().equals("valkea"))    {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    private boolean mustaEiSaaKotiuttaa() {
+        if (!mustaVankila.getNappulat().isEmpty())  {
+            return false;
+        }
+        for (int i = 6; i < 24; i++)    {
+            if (!ruudut.get(i).getNappulat().isEmpty() && ruudut.get(i).getNappulat().get(0).getVari().equals("musta"))    {
+                return false;
+            }
+        }
+        return true;
     }
     
 }

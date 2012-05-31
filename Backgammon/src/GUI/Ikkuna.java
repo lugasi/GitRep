@@ -8,8 +8,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
+ * Piirtää pelin graafisen näkymän ja kontrolloi pelin kulkua.
  *
- * @author lugasi
  */
 public class Ikkuna extends JFrame {
 
@@ -125,15 +125,16 @@ public class Ikkuna extends JFrame {
         });
 
         for (int i = 0; i < 24; i++) {
-            
+
             r[i].addActionListener(new ActionListener() {
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    
+
                     int valittuRuutu = Integer.parseInt(e.getActionCommand());
-                    
+
                     if (lahtoRuudunValinta) {
-                        
+
                         lahtoRuutu = peli.getLauta().getRuudut().get(valittuRuutu);
                         lahtoRuudunValinta = false;
                     } else if (maaliRuudunValinta) {
@@ -144,6 +145,42 @@ public class Ikkuna extends JFrame {
                 }
             });
         }
+
+        v1.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (lahtoRuudunValinta) {
+
+                    lahtoRuutu = peli.getLauta().getMustaVankila();
+                    lahtoRuudunValinta = false;
+                }
+                if (maaliRuudunValinta) {
+
+                    maaliRuutu = peli.getLauta().getValkeaKoti();
+                    maaliRuudunValinta = false;
+                }
+                paivita();
+            }
+        });
+        
+        v2.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (lahtoRuudunValinta) {
+
+                    lahtoRuutu = peli.getLauta().getValkeaVankila();
+                    lahtoRuudunValinta = false;
+                }
+                if (maaliRuudunValinta) {
+                    maaliRuutu = peli.getLauta().getMustaKoti();
+                    maaliRuudunValinta = false;
+                }
+                paivita();
+            }
+        });
+
     }
 
     public void pelaa() {
@@ -154,6 +191,7 @@ public class Ikkuna extends JFrame {
             if (!peli.isEkaKierros()) {
                 peli.heitaNopat();
                 //heitaNopat();
+                paivita();
             }
             siirraNappuloita();
             peli.vuoroVaihtuu();
@@ -186,29 +224,28 @@ public class Ikkuna extends JFrame {
         v1.setText("Heitä nopat.");
         nopanHeitto = true;
         while (nopanHeitto) {
-            
         }
-        
+
     }
 
     private void siirraNappuloita() {
         while (peli.noppiaKayttamatta()) {
-            
+
             v1.setText("Valitse lähtöruutu.");
             lahtoRuudunValinta = true;
             while (lahtoRuudunValinta) {
             }
-            
+
             v1.setText("Valitse maaliruutu.");
             maaliRuudunValinta = true;
             while (maaliRuudunValinta) {
             }
-            
+
             v1.setText("Valitse noppa.");
             nopanValinta = true;
             while (nopanValinta) {
             }
-            
+
 
             peli.yritaSiirtaaNappulaa(lahtoRuutu, maaliRuutu, noppa);
             paivita();

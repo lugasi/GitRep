@@ -2,8 +2,9 @@
 package Logic;
 
 /**
- *
- * @author lugasi
+ * Jokaisella nappulalla on väri (valkea tai musta) ja tieto ruudusta jossa
+ * nappula sijaitsee.
+ * 
  */
 public class Nappula {
     private String vari;

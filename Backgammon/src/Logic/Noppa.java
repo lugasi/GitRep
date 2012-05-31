@@ -2,8 +2,9 @@
 package Logic;
 
 /**
- *
- * @author lugasi
+ * Noppa arpoo luvun väliltä 1-6 ja säilyttää sen kunnes noppaa heitetään
+ * uudelleen.
+ * 
  */
 public class Noppa {
     private int silmaluku;
@@ -33,7 +34,7 @@ public class Noppa {
 
     @Override
     public String toString() {
-        return "" + silmaluku;
+        return "" + silmaluku + " " + (kaytetty ? "(käytetty)" : "");
     }
     
     

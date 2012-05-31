@@ -4,8 +4,9 @@ package Logic;
 import java.util.ArrayList;
 
 /**
- *
- * @author lugasi
+ * Jokaisella ruudulla on ruutunumero ja lista kaikista nappuloista, jotka
+ * ruudussa ovat.
+ * 
  */
 public class Ruutu {
     protected int ruutuNro;
