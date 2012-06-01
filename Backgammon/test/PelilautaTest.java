@@ -87,7 +87,13 @@ public class PelilautaTest {
         assertEquals(0, lauta.getRuudut().get(6).getNappulat().size());
     }
     
-    
+    @Test
+    public void nappulaaEiSiirretaVastustajanRuutuun() {
+        while(noppa.heita() != 5)   {
+            
+        }
+        assertFalse(lauta.yritaSiirtaaNappulaa(lauta.getRuudut().get(0), lauta.getRuudut().get(5), "valkea", noppa));
+    }
     
     
 }

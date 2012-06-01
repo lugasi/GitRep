@@ -195,6 +195,7 @@ public class Ikkuna extends JFrame {
             }
             siirraNappuloita();
             peli.vuoroVaihtuu();
+            peli.tarkistaVoittaja();
         }
         peli.lopetus();
     }
@@ -230,7 +231,7 @@ public class Ikkuna extends JFrame {
 
     private void siirraNappuloita() {
         while (peli.noppiaKayttamatta()) {
-
+            
             v1.setText("Valitse lähtöruutu.");
             lahtoRuudunValinta = true;
             while (lahtoRuudunValinta) {

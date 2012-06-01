@@ -86,16 +86,16 @@ public class Pelilauta {
         if (!lahto.getNappulat().get(0).getVari().equals(vuoro)) {
             return false;
         }
-        //vain nopan silmäluvun verran saa siirtyä
-        if (Math.abs(maali.getRuutuNro() - lahto.getRuutuNro()) != noppa.getSilmaluku())    {
-            return false;
-        }
         //vain käyttämättömällä nopalla saa siirtää
         if (noppa.getKaytetty() == true)    {
             return false;
         }
         //vastustajan kontrolloimaan (ainakin 2 nappulaa) ruutuun ei saa siirtyä
         if (!maali.getNappulat().isEmpty() && !maali.getNappulat().get(0).getVari().equals(lahto.getNappulat().get(0).getVari()) && maali.getNappulat().size() > 1)    {
+            return false;
+        }
+        //vain nopan silmäluvun verran saa siirtyä
+        if (Math.abs(maali.getRuutuNro() - lahto.getRuutuNro()) != noppa.getSilmaluku())    {
             return false;
         }
         

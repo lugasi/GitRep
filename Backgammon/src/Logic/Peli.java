@@ -40,6 +40,7 @@ public class Peli {
     public void asetaAlkutilanne() {
         lauta.asetaNappulatRuutuihin(valkeat, mustat);
         ekaKierros = true;
+        voittaja = "";
         while (noppa1.getSilmaluku() == noppa2.getSilmaluku()) {
             heitaNopat();
         }
@@ -95,7 +96,14 @@ public class Peli {
         return lauta;
     }
     
-    
+    public void tarkistaVoittaja()  {
+        if (lauta.getValkeaKoti().getNappulat().size() == 15)   {
+            voittaja = "valkea";
+        }
+        if (lauta.getMustaKoti().getNappulat().size() == 15)    {
+            voittaja = "musta";
+        }
+    }
 
     public String getVoittaja() {
         return voittaja;
