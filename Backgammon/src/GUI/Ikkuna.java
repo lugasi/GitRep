@@ -26,6 +26,7 @@ public class Ikkuna extends JFrame {
     private JButton n2 = new JButton("");
     private JButton v1 = new JButton("");
     private JButton v2 = new JButton("");
+    private JButton info = new JButton("");
     private JPanel p1;
     private JPanel p2;
     private JPanel p3;
@@ -84,16 +85,18 @@ public class Ikkuna extends JFrame {
         p6.add("Center", n2);
         p6.add("South", p1);
 
-        p7 = new JPanel(new GridLayout(2, 1));
+        p7 = new JPanel(new GridLayout(3, 1));
         p7.add(v1);
+        p7.add(info);
         p7.add(v2);
-
+        
         setLayout(new BorderLayout());
+        
         add("West", p5);
         add("Center", p7);
         add("East", p6);
-
-
+        
+        
         n1.addActionListener(new ActionListener() {
 
             @Override
@@ -197,14 +200,14 @@ public class Ikkuna extends JFrame {
             peli.vuoroVaihtuu();
             peli.tarkistaVoittaja();
         }
-        peli.lopetus();
+        lopetus();
     }
 
     public void paivita() {
         for (int i = 0; i < 24; i++) {
             r[i].setText(peli.getLauta().getRuudut().get(i).toString());
         }
-        //v1.setText(peli.getLauta().getMustaVankila().toString());
+        v1.setText(peli.getLauta().getMustaVankila().toString());
         v2.setText(peli.getLauta().getValkeaVankila().toString());
         n1.setText("Noppa 1: " + peli.getNoppa1().toString());
         n2.setText("Noppa 2: " + peli.getNoppa2().toString());
@@ -220,9 +223,22 @@ public class Ikkuna extends JFrame {
         i.setSize(1200, 400);
         i.pelaa();
     }
+    
+    public void lopetus()   {
+        if (peli.getVoittaja().equals("valkea"))    {
+            n1.setText("Valkea voitti!");
+            n2.setText("Valkea voitti!");
+            info.setText("Valkea voitti!");
+        }
+        if (peli.getVoittaja().equals("musta"))    {
+            n1.setText("Musta voitti!");
+            n2.setText("Musta voitti!");
+            info.setText("Musta voitti!");
+        }
+    }
 
     private void heitaNopat() {
-        v1.setText("Heitä nopat.");
+        info.setText("Heitä nopat.");
         nopanHeitto = true;
         while (nopanHeitto) {
         }
@@ -230,25 +246,26 @@ public class Ikkuna extends JFrame {
     }
 
     private void siirraNappuloita() {
-        while (peli.noppiaKayttamatta()) {
+        while (peli.noppiaKayttamatta() && peli.siirtojaJaljella() && peli.getVoittaja().isEmpty()) {
             
-            v1.setText("Valitse lähtöruutu.");
+            info.setText("Valitse lähtöruutu.");
             lahtoRuudunValinta = true;
             while (lahtoRuudunValinta) {
             }
 
-            v1.setText("Valitse maaliruutu.");
+            info.setText("Valitse maaliruutu.");
             maaliRuudunValinta = true;
             while (maaliRuudunValinta) {
             }
 
-            v1.setText("Valitse noppa.");
+            info.setText("Valitse noppa.");
             nopanValinta = true;
             while (nopanValinta) {
             }
 
 
             peli.yritaSiirtaaNappulaa(lahtoRuutu, maaliRuutu, noppa);
+            peli.tarkistaVoittaja();
             paivita();
         }
     }

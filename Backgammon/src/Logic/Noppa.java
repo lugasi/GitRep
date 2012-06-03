@@ -34,7 +34,7 @@ public class Noppa {
 
     @Override
     public String toString() {
-        return "" + silmaluku + " " + (kaytetty ? "(käytetty)" : "");
+        return "" + silmaluku + (kaytetty ? " (käytetty)" : "");
     }
     
     

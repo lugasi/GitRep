@@ -3,11 +3,11 @@ package Logic;
 import java.util.ArrayList;
 
 /**
- * Hallinnoi pelikokonaisuutta eli pelilautaa, noppia, nappuloita, siirtovuoroja,
- * pelin alkamista ja loppumista.
- * 
- * 
- * 
+ * Hallinnoi pelikokonaisuutta eli pelilautaa, noppia, nappuloita,
+ * siirtovuoroja, pelin alkamista ja loppumista.
+ *
+ *
+ *
  */
 public class Peli {
 
@@ -54,7 +54,7 @@ public class Peli {
 
     public boolean yritaSiirtaaNappulaa(Ruutu lahto, Ruutu maali, Noppa noppa) {
         boolean onnistui = lauta.yritaSiirtaaNappulaa(lahto, maali, vuoro, noppa);
-        if (onnistui && tuplat == true && noppa1.getKaytetty() == true && noppa2.getKaytetty() == true)   {
+        if (onnistui && tuplat == true && noppa1.getKaytetty() == true && noppa2.getKaytetty() == true) {
             tuplat = false;
             noppa1.setKaytetty(false);
             noppa2.setKaytetty(false);
@@ -77,8 +77,6 @@ public class Peli {
     public Noppa getNoppa2() {
         return noppa2;
     }
-    
-    
 
     public void vuoroVaihtuu() {
         ekaKierros = false;
@@ -89,18 +87,15 @@ public class Peli {
         }
     }
 
-    public void lopetus() {
-    }
-
     public Pelilauta getLauta() {
         return lauta;
     }
-    
-    public void tarkistaVoittaja()  {
-        if (lauta.getValkeaKoti().getNappulat().size() == 15)   {
+
+    public void tarkistaVoittaja() {
+        if (lauta.getValkeaKoti().getNappulat().size() == 15) {
             voittaja = "valkea";
         }
-        if (lauta.getMustaKoti().getNappulat().size() == 15)    {
+        if (lauta.getMustaKoti().getNappulat().size() == 15) {
             voittaja = "musta";
         }
     }
@@ -124,6 +119,42 @@ public class Peli {
     public boolean noppiaKayttamatta() {
         return !noppa1.getKaytetty() || !noppa2.getKaytetty();
     }
-    
-    
+
+    public boolean siirtojaJaljella() {
+        if (vuoro.equals("valkea")) {
+            if (lauta.getValkeaVankila().getNappulat().isEmpty()) {
+                return true;
+            }
+            Ruutu r = lauta.getRuudut().get(noppa1.getSilmaluku() - 1);
+            if (!noppa1.getKaytetty()) {
+                if (r.getNappulat().isEmpty() || r.getNappulat().size() == 1 || r.getNappulat().get(0).getVari().equals("valkea")) {
+                    return true;
+                }
+            }
+            r = lauta.getRuudut().get(noppa2.getSilmaluku() - 1);
+            if (!noppa2.getKaytetty()) {
+                if (r.getNappulat().isEmpty() || r.getNappulat().size() == 1 || r.getNappulat().get(0).getVari().equals("valkea")) {
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            if (lauta.getMustaVankila().getNappulat().isEmpty()) {
+                return true;
+            }
+            Ruutu r = lauta.getRuudut().get(24 - noppa1.getSilmaluku());
+            if (!noppa1.getKaytetty()) {
+                if (r.getNappulat().isEmpty() || r.getNappulat().size() == 1 || r.getNappulat().get(0).getVari().equals("musta")) {
+                    return true;
+                }
+            }
+            r = lauta.getRuudut().get(24 - noppa2.getSilmaluku());
+            if (!noppa2.getKaytetty()) {
+                if (r.getNappulat().isEmpty() || r.getNappulat().size() == 1 || r.getNappulat().get(0).getVari().equals("musta")) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
 }
