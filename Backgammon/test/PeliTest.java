@@ -40,6 +40,12 @@ public class PeliTest {
     public void pelinAlkuArvotOikein()  {
         assertTrue(p.isEkaKierros());
         assertFalse(p.isTuplat());
+        if (p.getNoppa1().getSilmaluku() > p.getNoppa2().getSilmaluku())    {
+            assertEquals("valkea", p.getVuoro());
+        }
+        else    {
+            assertEquals("musta", p.getVuoro());
+        }
     }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

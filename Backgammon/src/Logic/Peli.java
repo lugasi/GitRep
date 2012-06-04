@@ -36,7 +36,11 @@ public class Peli {
             mustat.add(new Nappula("musta"));
         }
     }
-
+    
+    /**
+     * Asettaa pelin alkutilaan.
+     * 
+     */
     public void asetaAlkutilanne() {
         lauta.asetaNappulatRuutuihin(valkeat, mustat);
         ekaKierros = true;
@@ -62,6 +66,10 @@ public class Peli {
         return onnistui;
     }
 
+    /**
+     * Heittää molemmat nopat ja tarkistaa tuliko tuplat eli kaksi samaa silmälukua.
+     * 
+     */
     public void heitaNopat() {
         noppa1.heita();
         noppa2.heita();
@@ -78,6 +86,10 @@ public class Peli {
         return noppa2;
     }
 
+    /**
+     * Vaihtaa vuoron: valkea -> musta tai musta -> valkea.
+     * 
+     */
     public void vuoroVaihtuu() {
         ekaKierros = false;
         if (vuoro.equals("valkea")) {
@@ -90,7 +102,11 @@ public class Peli {
     public Pelilauta getLauta() {
         return lauta;
     }
-
+    
+    /**
+     * Tarkistaa, onko jompi kumpi pelaaja saanut kaikki nappulansa kotiutettua.
+     * 
+     */
     public void tarkistaVoittaja() {
         if (lauta.getValkeaKoti().getNappulat().size() == 15) {
             voittaja = "valkea";
@@ -119,7 +135,12 @@ public class Peli {
     public boolean noppiaKayttamatta() {
         return !noppa1.getKaytetty() || !noppa2.getKaytetty();
     }
-
+    
+    /**
+     * Tarkistaa, onko pelaajan nappula jäänyt jumiin vankilaan.
+     * 
+     * @return 
+     */
     public boolean siirtojaJaljella() {
         if (vuoro.equals("valkea")) {
             if (lauta.getValkeaVankila().getNappulat().isEmpty()) {

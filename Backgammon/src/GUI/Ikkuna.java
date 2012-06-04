@@ -185,7 +185,15 @@ public class Ikkuna extends JFrame {
         });
 
     }
-
+    
+    /**
+     * Määrittää pelin kulun. Ensin asetetaan nappulat alkuasemiin, jonka jälkeen
+     * pelataan vuorotellen yksi vuoro. Jokaisella vuorolla heitetään ensin nopat
+     * (automaattisesti), jonka jälkeen siirretään nappuloita kunnes kaikki nopat
+     * on käytetty. Peli loppuu kun toinen pelaaja on saanut kaikki nappulansa
+     * kotiutettua.
+     * 
+     */
     public void pelaa() {
         peli.asetaAlkutilanne();
         paivita();
@@ -203,17 +211,26 @@ public class Ikkuna extends JFrame {
         lopetus();
     }
 
+    /**
+     * Päivittää graafisen näkymän vastaamaan pelin nykyistä tilannetta.
+     * 
+     */
     public void paivita() {
         for (int i = 0; i < 24; i++) {
             r[i].setText(peli.getLauta().getRuudut().get(i).toString());
         }
         v1.setText(peli.getLauta().getMustaVankila().toString());
         v2.setText(peli.getLauta().getValkeaVankila().toString());
-        n1.setText("Noppa 1: " + peli.getNoppa1().toString());
+        n1.setText(peli.getVuoro() + "n vuoro:     Noppa 1: " + peli.getNoppa1().toString());
         n2.setText("Noppa 2: " + peli.getNoppa2().toString());
 
     }
 
+    /**
+     * Pääohjelma luo Ikkuna-olion ja kutsuu pelaa()-metodia.
+     * 
+     * @param args 
+     */
     public static void main(String[] args) {
         Ikkuna i = new Ikkuna();
         i.setTitle("Backgammon");
@@ -224,6 +241,10 @@ public class Ikkuna extends JFrame {
         i.pelaa();
     }
     
+    /**
+     * Ilmoittaa pelin voittajan.
+     * 
+     */
     public void lopetus()   {
         if (peli.getVoittaja().equals("valkea"))    {
             n1.setText("Valkea voitti!");
@@ -237,6 +258,11 @@ public class Ikkuna extends JFrame {
         }
     }
 
+    /**
+     * Nopat heitetään nykyään automaattisesti.
+     * 
+     * @deprecated
+     */
     private void heitaNopat() {
         info.setText("Heitä nopat.");
         nopanHeitto = true;
@@ -245,6 +271,10 @@ public class Ikkuna extends JFrame {
 
     }
 
+    /**
+     * Pelaaja siirtää nappuloitaan kunnes kaikki nopat on käytetty.
+     * 
+     */
     private void siirraNappuloita() {
         while (peli.noppiaKayttamatta() && peli.siirtojaJaljella() && peli.getVoittaja().isEmpty()) {
             

@@ -26,7 +26,13 @@ public class Pelilauta {
         valkeaVankila = new Vankila(0);
         mustaVankila = new Vankila(25);
     }
-
+    
+    /**
+     * Asettaa kaikki nappulat alkuasemiin.
+     * 
+     * @param valkeat
+     * @param mustat 
+     */
     public void asetaNappulatRuutuihin(ArrayList<Nappula> valkeat, ArrayList<Nappula> mustat) {
         asetaNappulatRuutuun(0, 2, ruudut.get(0), valkeat);
         asetaNappulatRuutuun(2, 5, ruudut.get(11), valkeat);
@@ -38,7 +44,15 @@ public class Pelilauta {
         asetaNappulatRuutuun(7, 3, ruudut.get(7), mustat);
         asetaNappulatRuutuun(10, 5, ruudut.get(5), mustat);
     }
-
+    
+    /**
+     * Asettaa tarvittavan määrän tietyn värisiä nappuloita yhteen ruutuun.
+     * 
+     * @param alkuindeksi
+     * @param maara
+     * @param ruutu
+     * @param nappulat 
+     */
     public void asetaNappulatRuutuun(int alkuindeksi, int maara, Ruutu ruutu, ArrayList<Nappula> nappulat) {
         for (int i = alkuindeksi; i < alkuindeksi + maara; i++) {
             Nappula n = nappulat.get(i);
@@ -131,14 +145,30 @@ public class Pelilauta {
         noppa.setKaytetty(true);
         return true;
     }
-
+    
+    /**
+     * Päivittää nappulan sijainnin.
+     * 
+     * @param nappula
+     * @param lahto
+     * @param maali 
+     */
     public void siirraNappula(Nappula nappula, Ruutu lahto, Ruutu maali) {
         nappula.asetaRuutuun(maali);
 
         maali.asetaNappula(nappula);
         lahto.poistaNappula(nappula);
     }
-
+    
+    /**
+     * Tarkistaa kotiutussiirron laillisuuden ja toteuttaa sen, jos se on laillinen.
+     * 
+     * @param lahto
+     * @param maali
+     * @param vuoro
+     * @param noppa
+     * @return 
+     */
     private boolean yritaKotiuttaa(Ruutu lahto, Ruutu maali, String vuoro, Noppa noppa) {
         //korkeintaan nopan silmäluvun verran saa siirtyä
         if (Math.abs(maali.getRuutuNro() - lahto.getRuutuNro()) > noppa.getSilmaluku()) {
@@ -158,6 +188,11 @@ public class Pelilauta {
         return false;
     }
 
+    /**
+     * Tarkistaa, ovatko valkean nappulat oikeissa asemissa kotiutusta varten.
+     * 
+     * @return 
+     */
     private boolean valkeaSaaKotiuttaa() {
         if (!valkeaVankila.getNappulat().isEmpty()) {
             return false;
@@ -170,6 +205,11 @@ public class Pelilauta {
         return true;
     }
 
+    /**
+     * Tarkistaa, ovatko mustan nappulat oikeissa asemissa kotiutusta varten.
+     * 
+     * @return 
+     */
     private boolean mustaSaaKotiuttaa() {
         if (!mustaVankila.getNappulat().isEmpty()) {
             return false;
