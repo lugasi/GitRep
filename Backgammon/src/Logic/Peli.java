@@ -148,13 +148,13 @@ public class Peli {
             }
             Ruutu r = lauta.getRuudut().get(noppa1.getSilmaluku() - 1);
             if (!noppa1.getKaytetty()) {
-                if (r.getNappulat().isEmpty() || r.getNappulat().size() == 1 || r.getNappulat().get(0).getVari().equals("valkea")) {
+                if (voikoRuutuunLiikkua(r)) {
                     return true;
                 }
             }
             r = lauta.getRuudut().get(noppa2.getSilmaluku() - 1);
             if (!noppa2.getKaytetty()) {
-                if (r.getNappulat().isEmpty() || r.getNappulat().size() == 1 || r.getNappulat().get(0).getVari().equals("valkea")) {
+                if (voikoRuutuunLiikkua(r)) {
                     return true;
                 }
             }
@@ -177,5 +177,9 @@ public class Peli {
             }
             return false;
         }
+    }
+
+    private boolean voikoRuutuunLiikkua(Ruutu r) {
+        return r.getNappulat().isEmpty() || r.getNappulat().size() == 1 || r.getNappulat().get(0).getVari().equals("valkea");
     }
 }
