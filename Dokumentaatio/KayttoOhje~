@@ -1,0 +1,7 @@
+Käyttöohje - Backgammon
+
+Pelissä on kaksi pelaajaa, musta ja valkea, jotka pelaavat vuorotellen. Jokainen pelaaja vuorollaan ensin heittää nopat (automaattisesti) ja siirtää sen jälkeen nappuloitaan kunnes kaikki nopat on käytetty. Tämän jälkeen vuoro siirtyy toiselle pelaajalle.
+
+Yksi siirto tapahtuu valitsemalla ensin ruutu, josta nappulaa siirretään (lähtöruutu); sitten ruutu, johon siirrytään (maaliruutu) ja lopulta noppa, joka siirtoon käytetään. Jos siirto on laillinen, se suoritetaan ja noppa merkitään käytetyksi. Jos pelaajan nappuloita on vankilassa, täytyy lähtöruuduksi valita vankilaruutu (valkean vankila keskellä alhaalla ja mustan vankila keskellä ylhäällä). Kun nappulaa kotiutetaan, täytyy maaliruuduksi valita kotiruutu (sama painike kuin vastustajan vankila).
+
+Pelaaja, joka ensimmäisenä saa kaikki 15 nappulaansa kotiutettua, voittaa pelin.

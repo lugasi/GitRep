@@ -44,36 +44,24 @@ public class Ikkuna extends JFrame {
         }
 
         p1 = new JPanel(new GridLayout(1, 6));
-        p1.add(r[5]);
-        p1.add(r[4]);
-        p1.add(r[3]);
-        p1.add(r[2]);
-        p1.add(r[1]);
-        p1.add(r[0]);
+        for (int i = 5; i >= 0; i--)    {
+            p1.add(r[i]);
+        }
 
         p2 = new JPanel(new GridLayout(1, 6));
-        p2.add(r[11]);
-        p2.add(r[10]);
-        p2.add(r[9]);
-        p2.add(r[8]);
-        p2.add(r[7]);
-        p2.add(r[6]);
+        for (int i = 11; i >= 6; i--)    {
+            p2.add(r[i]);
+        }
 
         p3 = new JPanel(new GridLayout(1, 6));
-        p3.add(r[12]);
-        p3.add(r[13]);
-        p3.add(r[14]);
-        p3.add(r[15]);
-        p3.add(r[16]);
-        p3.add(r[17]);
+        for (int i = 12; i <= 17; i++)    {
+            p3.add(r[i]);
+        }
 
         p4 = new JPanel(new GridLayout(1, 6));
-        p4.add(r[18]);
-        p4.add(r[19]);
-        p4.add(r[20]);
-        p4.add(r[21]);
-        p4.add(r[22]);
-        p4.add(r[23]);
+        for (int i = 18; i <= 23; i++)    {
+            p4.add(r[i]);
+        }
 
         p5 = new JPanel(new BorderLayout());
         p5.add("North", p3);

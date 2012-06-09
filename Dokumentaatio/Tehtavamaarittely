@@ -4,14 +4,16 @@ Toteutetaan ohjelma, jolla kaksi pelaajaa voivat pelata Backgammon-peliä.
 
 käyttäjät:	pelaaja (x2):
 
-toiminnot (valikko):
+toiminnot:
 	
-	- uusi peli
-	
-	- lopeta
-
-toiminnot (peli):
-	
-	- heitä noppia
+	- heitä nopat (automaattinen)
 	
 	- siirrä nappuloita
+
+siirrä nappuloita:
+
+	- valitse lähtöruutu
+
+	- valitse maaliruutu
+
+	- valitse noppa
