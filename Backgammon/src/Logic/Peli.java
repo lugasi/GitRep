@@ -137,7 +137,7 @@ public class Peli {
     }
     
     /**
-     * Tarkistaa, onko pelaajan nappula jäänyt jumiin vankilaan.
+     * Tarkistaa, onko pelaajalla laillisia siirtoja päästä ulos vankilasta.
      * 
      * @return 
      */
