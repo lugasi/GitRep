@@ -148,13 +148,13 @@ public class Peli {
             }
             Ruutu r = lauta.getRuudut().get(noppa1.getSilmaluku() - 1);
             if (!noppa1.getKaytetty()) {
-                if (voikoRuutuunLiikkua(r)) {
+                if (voikoRuutuunLiikkua(r, vuoro)) {
                     return true;
                 }
             }
             r = lauta.getRuudut().get(noppa2.getSilmaluku() - 1);
             if (!noppa2.getKaytetty()) {
-                if (voikoRuutuunLiikkua(r)) {
+                if (voikoRuutuunLiikkua(r, vuoro)) {
                     return true;
                 }
             }
@@ -165,13 +165,13 @@ public class Peli {
             }
             Ruutu r = lauta.getRuudut().get(24 - noppa1.getSilmaluku());
             if (!noppa1.getKaytetty()) {
-                if (r.getNappulat().isEmpty() || r.getNappulat().size() == 1 || r.getNappulat().get(0).getVari().equals("musta")) {
+                if (voikoRuutuunLiikkua(r, vuoro)) {
                     return true;
                 }
             }
             r = lauta.getRuudut().get(24 - noppa2.getSilmaluku());
             if (!noppa2.getKaytetty()) {
-                if (r.getNappulat().isEmpty() || r.getNappulat().size() == 1 || r.getNappulat().get(0).getVari().equals("musta")) {
+                if (voikoRuutuunLiikkua(r, vuoro)) {
                     return true;
                 }
             }
@@ -179,7 +179,7 @@ public class Peli {
         }
     }
 
-    private boolean voikoRuutuunLiikkua(Ruutu r) {
-        return r.getNappulat().isEmpty() || r.getNappulat().size() == 1 || r.getNappulat().get(0).getVari().equals("valkea");
+    private boolean voikoRuutuunLiikkua(Ruutu r, String vuoro) {
+        return r.getNappulat().isEmpty() || r.getNappulat().size() == 1 || r.getNappulat().get(0).getVari().equals(vuoro);
     }
 }

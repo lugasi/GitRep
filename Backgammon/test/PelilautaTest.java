@@ -95,5 +95,16 @@ public class PelilautaTest {
         assertFalse(lauta.yritaSiirtaaNappulaa(lauta.getRuudut().get(0), lauta.getRuudut().get(5), "valkea", noppa));
     }
     
+    @Test
+    public void nappulaaEiSiirretaJosToinenNappulaVankilassa()  {
+        lauta.siirraNappula(lauta.getRuudut().get(0).getNappulat().get(0), lauta.getRuudut().get(0), lauta.getValkeaVankila());
+        assertFalse(lauta.yritaSiirtaaNappulaa(lauta.getRuudut().get(0), lauta.getRuudut().get(5), "valkea", noppa));
+    }
     
+    @Test
+    public void nappulaSiirretaanJosSiirtoLaillinen()   {
+        assertTrue(lauta.yritaSiirtaaNappulaa(lauta.getRuudut().get(0), lauta.getRuudut().get(6), "valkea", noppa));
+        assertEquals(1, lauta.getRuudut().get(0).getNappulat().size());
+        assertEquals(1, lauta.getRuudut().get(6).getNappulat().size());
+    }
 }

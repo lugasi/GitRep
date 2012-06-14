@@ -1,0 +1,7 @@
+Testausdokumentti
+
+Olen tehnyt JUnit-testejä pelin perustoiminnallisuuksista: pelin alkuarvot ovat oikein, nappulat on oikein asetettu, noppa toimii, laitonta siirtoa ei suoriteta ja laillinen suoritetaan. Kaikki muut toiminnot sekä käyttöliittymän olen testannut manuaalisesti peliä pelaamalla.
+
+Manuaalisesti olen testannut esimerkiksi säännöt, joilla nappulat kotiutetaan tai vapautetaan vankilasta; nappuloiden siirtämisen vankilaan; voittajan tarkistuksen; nopanheiton tuplasäännöt ja pelivuoron oikean rakenteen.
+
+JUnit-testeistä ei lopulta ollut merkittävää hyötyä, koska tein testit vasta ohjelmoinnin jälkeen. Lisäksi sain manuaalisesti testattua kaiken tarpeellisen. Suurempien ohjelmistojen kehittämisessä JUnit-testit ovat tarpeellisempia, koska kaiken manuaaliseen tarkistamiseen kuluisi liikaa aikaa.
