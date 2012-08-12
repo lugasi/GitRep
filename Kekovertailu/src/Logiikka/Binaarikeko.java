@@ -1,7 +1,7 @@
 
 package Logiikka;
 
-public class Binaarikeko {
+public class Binaarikeko implements Keko {
     private int[] A;
     private int heap_size;
     
@@ -43,10 +43,12 @@ public class Binaarikeko {
         }
     }
     
+    @Override
     public int heap_max()   {
         return A[0];
     }
     
+    @Override
     public int heap_del_max()   {
         int max = A[0];
         A[0] = A[heap_size-1];
@@ -55,6 +57,7 @@ public class Binaarikeko {
         return max;
     }
     
+    @Override
     public void heap_insert(int k)  {
         heap_size++;
         int i = heap_size-1;
@@ -65,6 +68,7 @@ public class Binaarikeko {
         A[i] = k;
     }
     
+    @Override
     public void heap_inc_key(int i, int newk)   {
         if (newk > A[i])    {
             A[i] = newk;
@@ -75,6 +79,7 @@ public class Binaarikeko {
         }
     }
     
+    @Override
     public void heap_dec_key(int i, int newk)   {
         if (newk < A[i])    {
             A[i] = newk;
