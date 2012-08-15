@@ -6,7 +6,7 @@ public class Binaarikeko implements Keko {
     private int heap_size;
     
     public Binaarikeko()    {
-        A = new int[10];
+        A = new int[100];
         heap_size = 0;
     }
     
@@ -69,8 +69,8 @@ public class Binaarikeko implements Keko {
     }
     
     @Override
-    public void heap_inc_key(int i, int newk)   {
-        if (newk > A[i])    {
+    public void heap_dec_key(int i, int newk)   {
+        if (newk < A[i])    {
             A[i] = newk;
             while (i>0 && A[parent(i)] < A[i])  {
                 swap(i, parent(i));
@@ -80,8 +80,8 @@ public class Binaarikeko implements Keko {
     }
     
     @Override
-    public void heap_dec_key(int i, int newk)   {
-        if (newk < A[i])    {
+    public void heap_inc_key(int i, int newk)   {
+        if (newk > A[i])    {
             A[i] = newk;
             heapify(i);
         }
