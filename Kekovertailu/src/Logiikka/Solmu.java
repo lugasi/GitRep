@@ -15,4 +15,9 @@ public class Solmu {
         child = null;
         sibling = null;
     }
+    
+    public Solmu(int key)   {
+        this();
+        this.key = key;
+    }
 }

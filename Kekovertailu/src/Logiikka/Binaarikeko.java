@@ -50,6 +50,9 @@ public class Binaarikeko implements Keko {
     
     @Override
     public int heap_del_max()   {
+        if (heap_size == 0) {
+            return Integer.MIN_VALUE;
+        }
         int max = A[0];
         A[0] = A[heap_size-1];
         heap_size--;
@@ -66,11 +69,18 @@ public class Binaarikeko implements Keko {
             i = parent(i);
         }
         A[i] = k;
+        if (heap_size == A.length)  {
+            int[] B = new int[A.length * 2];
+            for (int j = 0; j < A.length; j++)  {
+                B[j] = A[j];
+            }
+            A = B;
+        }
     }
     
     @Override
-    public void heap_dec_key(int i, int newk)   {
-        if (newk < A[i])    {
+    public void heap_inc_key(int i, int newk)   {
+        if (newk > A[i])    {
             A[i] = newk;
             while (i>0 && A[parent(i)] < A[i])  {
                 swap(i, parent(i));
@@ -80,8 +90,8 @@ public class Binaarikeko implements Keko {
     }
     
     @Override
-    public void heap_inc_key(int i, int newk)   {
-        if (newk > A[i])    {
+    public void heap_dec_key(int i, int newk)   {
+        if (newk < A[i])    {
             A[i] = newk;
             heapify(i);
         }
