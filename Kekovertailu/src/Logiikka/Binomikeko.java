@@ -1,6 +1,10 @@
 
 package Logiikka;
 
+/**
+ * Toteutettu listana binomipuita.
+ */
+
 public class Binomikeko implements Keko {
     
     private Solmu head;
@@ -93,8 +97,14 @@ public class Binomikeko implements Keko {
         return new_head;
     }
 
+    /**
+     * Palauttaa keon maksimiarvon tai -2^31 jos keko on tyhjä. 
+     */
     @Override
     public int heap_max() {
+        if (head == null) {
+            return Integer.MIN_VALUE;
+        }
         return max().key;
     }
     
@@ -111,7 +121,10 @@ public class Binomikeko implements Keko {
         }
         return y;
     }
-
+    
+    /**
+     * Palauttaa ja poistaa keon maksimiarvon tai palauttaa -2^31 jos keko on tyhjä.
+     */
     @Override
     public int heap_del_max() {
         Solmu max = max();
@@ -152,6 +165,9 @@ public class Binomikeko implements Keko {
         return max.key;
     }
 
+    /**
+     * Lisää uuden alkion kekoon. 
+     */
     @Override
     public void heap_insert(int k) {
         Solmu s = new Solmu(k);

@@ -1,6 +1,10 @@
 
 package Logiikka;
 
+/**
+ * Toteutettu taulukkona, joka pidetään kekojärjestyksessä.
+ */
+
 public class Binaarikeko implements Keko {
     private int[] A;
     private int heap_size;
@@ -22,6 +26,9 @@ public class Binaarikeko implements Keko {
         return 2*i+2;
     }
     
+    /**
+     * Järjestää taulukon kekojärjestykseen. 
+     */
     private void heapify(int i)  {
         int l = left(i);
         int r = right(i);
@@ -43,11 +50,20 @@ public class Binaarikeko implements Keko {
         }
     }
     
+    /**
+     * Palauttaa keon maksimiarvon tai -2^31 jos keko on tyhjä.
+     */
     @Override
     public int heap_max()   {
+        if (heap_size == 0) {
+            return Integer.MIN_VALUE;
+        }
         return A[0];
     }
     
+    /**
+     * Palauttaa ja poistaa keon maksimiarvon tai palauttaa -2^31 jos keko on tyhjä.
+     */
     @Override
     public int heap_del_max()   {
         if (heap_size == 0) {
@@ -60,6 +76,9 @@ public class Binaarikeko implements Keko {
         return max;
     }
     
+    /**
+     * Lisää uuden alkion kekoon ja kasvattaa kekoa tarvittaessa. 
+     */
     @Override
     public void heap_insert(int k)  {
         heap_size++;

@@ -1,6 +1,10 @@
 
 package Logiikka;
 
+/**
+ * Fibonacci-keossa käytettävä solmu.
+ */
+
 public class FibSolmu {
     public FibSolmu parent;
     public int key;

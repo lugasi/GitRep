@@ -1,6 +1,10 @@
 
 package Logiikka;
 
+/**
+ * Binomikeossa käytettävä solmu.
+ */
+
 public class Solmu {
     public Solmu parent;
     public int key;

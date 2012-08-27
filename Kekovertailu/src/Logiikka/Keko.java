@@ -1,6 +1,11 @@
 
 package Logiikka;
 
+/**
+ * Rajapinta kekojen operaatioille.
+ * 
+ */
+
 interface Keko {
     public int heap_max();
     public int heap_del_max();
