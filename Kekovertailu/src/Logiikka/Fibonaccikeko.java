@@ -46,7 +46,7 @@ public class Fibonaccikeko implements Keko {
         z.right.left = z.left;
         if (z == z.right)   {
             max = null;
-        }
+        } 
         else    {
             max = z.right;
             consolidate();
@@ -67,7 +67,7 @@ public class Fibonaccikeko implements Keko {
         boolean first = true;
         while (w != max || first)   {
             FibSolmu x = w;
-            int d = x.degree;
+            int d = x.degree;   
             while (A[d] != null)    {
                 FibSolmu y = A[d];
                 if (x.key < y.key)  {
@@ -80,10 +80,20 @@ public class Fibonaccikeko implements Keko {
                     y.degree = temp_degree;
                     y.key = temp_key;
                     y.mark = temp_mark;
-                }
+                }            
                 y.left.right = y.right;
                 y.right.left = y.left;
-                x.child = y;
+                
+                y.left = y;
+                y.right = y;
+                
+                
+                if (x.child == null){
+                    x.child = y;
+                }
+                else    {
+                    concatenate(x.child, y);
+                }
                 x.degree++;
                 y.mark = false;
                 A[d] = null;
