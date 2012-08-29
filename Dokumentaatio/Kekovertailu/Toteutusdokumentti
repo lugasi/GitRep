@@ -1,0 +1,5 @@
+Ohjelma koostuu kolmesta keosta: binäärikeko, binomikeko ja Fibonacci-keko sekä pääohjelmasta, jolla testataan kekojen aikavaativuuksia. Pääohjelma ilmoittaa testattavan keon insert-, max- ja del_max-operaatioihin kuluneen ajan valitulla syötteen koolla. Syöte on satunnaisia kokonaislukuja väliltä 1-100. Toistamalla testia tarpeeksi monta kertaa kullekin keolle voidaan kekojen operaatioiden aikavaativuudet laskea. Ks. testausdokumentti.
+
+Fibonacci-keon consolidate-metodissa on tällä hetkellä ongelma, jonka vuoksi alkion poisto keosta ei toimi oikein.
+
+Lähteinä työssä on käytetty Cormenin Introduction to Algorithms- kirjaa sekä Wikipediaa.
