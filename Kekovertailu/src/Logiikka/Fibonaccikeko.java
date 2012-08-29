@@ -103,16 +103,22 @@ public class Fibonaccikeko implements Keko {
             first = false;
             A[d] = x; 
         }
-        FibSolmu next = max.right;
         max = null;
         for (int i = 0; i < heap_size; i++) {
             if (A[i] != null)   {
+                A[i].left.right = A[i].right;
+                A[i].right.left = A[i].left;
                 A[i].parent = null;
                 A[i].left = A[i];
                 A[i].right = A[i];
-                concatenate(next, A[i]);
-                if (max == null || A[i].key > max.key)  {
+                if (max == null)    {
                     max = A[i];
+                }
+                else    {
+                    concatenate(max, A[i]);
+                    if (A[i].key > max.key) {
+                        max = A[i];
+                    }
                 }
             }
         }

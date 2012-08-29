@@ -52,7 +52,7 @@ public class Main {
                 catch (Exception e) {
                     lukija.nextLine();
                 }
-            }
+            }            
             long alkuaika;
             long loppuaika;
             alkuaika = System.currentTimeMillis();
@@ -72,6 +72,7 @@ public class Main {
             alkuaika = System.currentTimeMillis();
             for (int i = 0; i < n; i++)    {
                 int key = k.heap_del_max();
+                System.out.println(key);
             }
             loppuaika = System.currentTimeMillis();
             System.out.println(n + " del_max-operaatiota: " + (loppuaika-alkuaika) + " ms.");
