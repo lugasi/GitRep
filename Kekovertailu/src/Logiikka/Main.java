@@ -64,7 +64,7 @@ public class Main {
             
             alkuaika = System.currentTimeMillis();
             for (int i = 0; i < n; i++)    {
-                k.heap_max();
+                int key = k.heap_max();
             }
             loppuaika = System.currentTimeMillis();
             System.out.println(n + " max-operaatiota: " + (loppuaika-alkuaika) + " ms.");
@@ -72,7 +72,7 @@ public class Main {
             alkuaika = System.currentTimeMillis();
             for (int i = 0; i < n; i++)    {
                 int key = k.heap_del_max();
-                System.out.println(key);
+                //System.out.println(key);
             }
             loppuaika = System.currentTimeMillis();
             System.out.println(n + " del_max-operaatiota: " + (loppuaika-alkuaika) + " ms.");
