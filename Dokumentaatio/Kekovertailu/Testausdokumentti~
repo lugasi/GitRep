@@ -42,6 +42,4 @@ koko (n)	insert	max	del_max		insert	max	del_max
 5000000		251	19	647		924	57	1764
 6000000		247	20	658		1142	68	2170
 
-Tulosten perusteella binäärikeon max-operaation aikavaativuus on O(1) ja del_max- operaation O(log n) eli samat kuin teoreettiset aikavaativuudet. Binomikeon del_max-operaatio noudattaa myös O(log n) aikavaativuutta. Binomikeon max-operaation tuloksista ei voi päätellä, onko operaation aikavaativuus O(1) vai teorian vaatima O(log n). Jos alle miljoonan syötteen tulokset jätetään huomiotta, binomikeon insert-operaatio noudattaa O(log n) aikavaativuutta. Binäärikeon insert-operaation tulokset ovat erittäin poikkeavia, sillä yhteen operaatioon kuluva keskimääräinen aika näyttäisi pienenevän syötteen koon kasvaessa, mikä on täysin odotusten vastaista.
 
-Binäärikeko on tulosten perusteella tehokkaampi keko kuin binomikeko, mikä oli odotettavaa, koska binäärikeon taulukkototeutus on kevyempi kuin binomikeon linkitetty toteutus.

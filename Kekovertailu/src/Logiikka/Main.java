@@ -55,20 +55,21 @@ public class Main {
             }            
             long alkuaika;
             long loppuaika;
+            System.gc();
             alkuaika = System.currentTimeMillis();
             for (int i = 0; i < n; i++)    {
                 k.heap_insert((int)(100 * Math.random() + 1));
             }
             loppuaika = System.currentTimeMillis();
             System.out.println(n + " insert-operaatiota: " + (loppuaika-alkuaika) + " ms.");
-            
+            System.gc();
             alkuaika = System.currentTimeMillis();
             for (int i = 0; i < n; i++)    {
                 int key = k.heap_max();
             }
             loppuaika = System.currentTimeMillis();
             System.out.println(n + " max-operaatiota: " + (loppuaika-alkuaika) + " ms.");
-            
+            System.gc();
             alkuaika = System.currentTimeMillis();
             for (int i = 0; i < n; i++)    {
                 int key = k.heap_del_max();

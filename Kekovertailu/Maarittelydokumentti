@@ -1,0 +1,5 @@
+Tavoitteena on toteuttaa kolme erilaista (maksimi)kekoa: binäärikeko, binomikeko ja Fibonacci-keko sekä vertailla näiden kekojen operaatioiden aika- ja tilavaativuuksia. Binäärikeko toteutetaan taulukkona, binomikeko listana binomipuita.
+
+Keoille toteutetaan metodit maksimin lukemiselle ja poistamiselle, uuden alkion lisäämiselle, alkion arvon suurentamiselle ja pienentämiselle sekä kahden keon yhdistämiselle.
+
+Tavoiteltava aikavaativuusluokka on pääosin O(log n). Kekojen tehokkuutta testataan pääohjelmassa.
